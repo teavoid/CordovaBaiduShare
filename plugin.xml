@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="net.qdkf.Baidushare" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Baidushare</name>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Baidushare">
+                <param name="android-package" value="net.qdkf.Baidushare.Baidushare"/>
+            </feature>
+        </config-file>
+
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+            <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+            <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+            <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+            <uses-permission android:name="android.permission.VIBRATE"/>
+            <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+        </config-file>
+
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <!-- Frontia分享 开始-->
+            <activity
+                    android:name="com.baidu.frontia.activity.share.FrontiaSocialOAuthActivity"
+                    android:exported="true"
+                    android:screenOrientation="portrait"
+                    android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            </activity>
+            <activity
+                    android:name="com.baidu.frontia.activity.share.FrontiaLocalShareActivity"
+                    android:configChanges="orientation|keyboardHidden"
+                    android:launchMode="singleTask">
+            </activity>
+            <activity
+                    android:name="com.baidu.frontia.activity.share.FrontiaQQFriendShareReceiverActivity"
+                    android:launchMode="singleTask">
+                <intent-filter>
+                    <action android:name="android.intent.action.VIEW"/>
+                    <category android:name="android.intent.category.DEFAULT"/>
+                    <category android:name="android.intent.category.BROWSABLE"/>
+                    <data android:scheme="tencent此处为腾讯开放平台APPKey"/>
+                </intent-filter>
+            </activity>
+            <!-- 用户微信回调的 activity -->
+            <activity
+                    android:name="net.qdkf.wxapi.WXEntryActivity"
+                    android:exported="true"
+                    android:label="@string/app_name"
+                    android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            </activity>
+            <!-- Frontia分享 结束-->
+        </config-file>
+
+
+        <source-file src="src/android/Baidushare.java" target-dir="src/net/qdkf/Baidushare"/>
+
+        <source-file src="src/android/wxapi/WXEntryActivity.java" target-dir="src/net/qdkf/wxapi"/>
+        <source-file src="src/android/libs/Baidu-Frontia-Android-2.0.8.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/armeabi/libbdpush_V2_1.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/mips/libbdpush_V2_1.so" target-dir="libs/mips"/>
+        <source-file src="src/android/config.json" target-dir="assets"/>
+    </platform>
+
+    <platform name="ios">
+
+    	<config-file target="config.xml" parent="/*">
+            <feature name="Baidushare">
+                <param name="ios-package" value="Baidushare" />
+            </feature>
+        </config-file>
+
+
+        <header-file src="src/ios/Plugins/Baidushare.h"/>
+        <source-file src="src/ios/Plugins/Baidushare.m"/>
+
+        <framework src="MobileCoreServices.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="QuartzCore.framework" weak="true" />
+        <framework src="UIKit.framework" weak="true" />
+        <framework src="Foundation.framework" weak="true" />
+        <framework src="CoreGraphics.framework" weak="true" />
+        <framework src="MessageUI.framework" weak="true" />
+        <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="libsqlite3.dylib" weak="true" />
+        <framework src="libstdc++.dylib" weak="true" />
+        <framework src="libz.dylib" weak="true" />
+
+        <source-file src="src/ios/BaiduSocialShareSInternal" target-dir="./"/>
+        <source-file src="src/ios/output" target-dir="./"/>
+
+    </platform>
+
+</plugin>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>multi</key>
+	<string>一键分享</string>
+	<key>sinaweibo</key>
+	<string>新浪微博</string>
+	<key>qqdenglu</key>
+	<string>QQ空间</string>
+	<key>kaixin</key>
+	<string>开心网</string>
+	<key>qqweibo</key>
+	<string>腾讯微博</string>
+	<key>renren</key>
+	<string>人人网</string>
+	<key>qqfriend</key>
+	<string>QQ好友</string>
+	<key>weixin_session</key>
+	<string>微信好友</string>
+	<key>weixin_timeline</key>
+	<string>朋友圈</string>
+	<key>email</key>
+	<string>邮件</string>
+	<key>sms</key>
+	<string>短信</string>
+	<key>copy</key>
+	<string>复制链接</string>
+	<key>hi</key>
+	<string>百度Hi</string>
+	<key>custom1</key>
+	<string>贴吧</string>
+</dict>
+</plist>
